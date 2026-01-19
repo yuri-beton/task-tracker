@@ -3,10 +3,9 @@ public static class TaskListExtension
 {
     public static List<Task> Save(this List<Task> tasks)
     {
-        using (FileStream fs = new FileStream("tasks.json", FileMode.OpenOrCreate))
+        using (FileStream fs = new FileStream("tasks.json", FileMode.Create))
         {
             JsonSerializer.SerializeAsync<List<Task>>(fs, tasks);
-            Console.WriteLine("Data has been saved to file");
         }
         return tasks;
     }
@@ -17,7 +16,6 @@ public static class TaskListExtension
             if(fs.Length == 0)
                 return new List<Task>();
             tasks = JsonSerializer.Deserialize<List<Task>>(fs);
-            Console.WriteLine("Data has been readed");
         }
         return tasks;
     }

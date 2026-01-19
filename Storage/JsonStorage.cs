@@ -27,7 +27,12 @@ public class JsonStorage : IStorage<Task, TaskDto>
 
     public bool Delete(int id)
     {
-        throw new NotImplementedException();
+        tasks = tasks.Read();
+        var newTask = tasks.Where(x => x.Id != id).ToList();
+        if(tasks.Count == newTask.Count)
+            return false;
+        newTask.Save();
+        return true;
     }
 
     public List<Task> GetAll()

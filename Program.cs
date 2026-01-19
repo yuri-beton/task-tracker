@@ -9,6 +9,11 @@ class Program
             Description = "blabla", Status = "ready"
         };
         var jsonStorage = new JsonStorage();
-        jsonStorage.Add(task);
+        var service = new Service(jsonStorage);
+
+        // service.Add(task);
+        // service.Add(task);
+
+        service.Delete(1);
     }
 }
