@@ -27,7 +27,20 @@ public class Service : IService<Task, TaskDto>
 
     public void GetAll()
     {
-        throw new NotImplementedException();
+        var tasks = storage.GetAll();
+        if(tasks.Count == 0)
+        {
+            Console.WriteLine("Заданий нет");
+            return;
+        }
+        foreach(var task in tasks)
+        {
+            Console.WriteLine($"ID: {task.Id}");
+            Console.WriteLine($"Description: {task.Description}");
+            Console.WriteLine($"Created at: {task.CreatedAt}");
+            Console.WriteLine($"Updated at: {task.UpdatedAt}");
+            Console.WriteLine();
+        }
     }
 
     public void GetAll(string status)

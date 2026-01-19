@@ -14,6 +14,8 @@ class Program
         // service.Add(task);
         // service.Add(task);
 
-        service.Delete(1);
+        // service.Delete(1);
+
+        service.GetAll();
     }
 }
