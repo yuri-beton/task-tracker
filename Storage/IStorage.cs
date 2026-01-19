@@ -1,6 +1,6 @@
-public interface IStorage<T>
+public interface IStorage<T, TDto>
 {
-    bool Add(T t);
+    bool Add(TDto t);
     bool Update(int id);
     bool Delete(int id);
     bool Mark(int id, string status);

@@ -1,17 +1,26 @@
 using System.Text.Json;
 
-public class JsonStorage : IStorage<Task>
+public class JsonStorage : IStorage<Task, TaskDto>
 {
     private List<Task> tasks;
-    public bool Add(Task t)
+    public bool Add(TaskDto t)
     {
+        int maxId = 0;
         tasks = tasks.Read();
         foreach(var task in tasks)
         {
-            if(task.Id == t.Id)
-                return false;
+            if(task.Id > maxId)
+                maxId = task.Id;
         }
-        tasks.Add(t);
+        var newTask = new Task()
+        {
+            Id = maxId + 1,
+            Description = t.Description,
+            Status = t.Status,
+            CreatedAt = t.CreatedAt,
+            UpdatedAt = t.UpdatedAt
+        };
+        tasks.Add(newTask);
         tasks.Save();
         return true;
     }
