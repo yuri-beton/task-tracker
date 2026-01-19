@@ -43,7 +43,8 @@ public class JsonStorage : IStorage<Task, TaskDto>
 
     public List<Task> GetAll(string status)
     {
-        throw new NotImplementedException();
+        tasks = tasks.Read();
+        return tasks.Where(task => task.Status == status).ToList();
     }
 
     public bool Mark(int id, string status)

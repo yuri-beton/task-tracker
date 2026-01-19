@@ -1,3 +1,5 @@
+using System.Net.NetworkInformation;
+
 public class Service : IService<Task, TaskDto>
 {
     private IStorage<Task, TaskDto> storage;
@@ -7,6 +9,7 @@ public class Service : IService<Task, TaskDto>
     }
     public void Add(TaskDto task)
     {
+        //To-do: validation for status
         if (storage.Add(task))
         {
             Console.WriteLine("Задание успешно добавлено");
@@ -37,6 +40,7 @@ public class Service : IService<Task, TaskDto>
         {
             Console.WriteLine($"ID: {task.Id}");
             Console.WriteLine($"Description: {task.Description}");
+            Console.WriteLine($"Status: {task.Status}");
             Console.WriteLine($"Created at: {task.CreatedAt}");
             Console.WriteLine($"Updated at: {task.UpdatedAt}");
             Console.WriteLine();
@@ -45,7 +49,22 @@ public class Service : IService<Task, TaskDto>
 
     public void GetAll(string status)
     {
-        throw new NotImplementedException();
+        //To-do: validation for incorrect status
+        var tasks = storage.GetAll(status);
+        if(tasks.Count == 0)
+        {
+            Console.WriteLine("Заданий нет");
+            return;
+        }
+        foreach(var task in tasks)
+        {
+            Console.WriteLine($"ID: {task.Id}");
+            Console.WriteLine($"Description: {task.Description}");
+            Console.WriteLine($"Status: {task.Status}");
+            Console.WriteLine($"Created at: {task.CreatedAt}");
+            Console.WriteLine($"Updated at: {task.UpdatedAt}");
+            Console.WriteLine();
+        }
     }
 
     public void Mark(int id, string status)

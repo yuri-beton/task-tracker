@@ -16,6 +16,6 @@ class Program
 
         // service.Delete(1);
 
-        service.GetAll();
+        service.GetAll("ready");
     }
 }
