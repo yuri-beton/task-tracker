@@ -49,10 +49,20 @@ public class JsonStorage : IStorage<Task, TaskDto>
 
     public bool Mark(int id, string status)
     {
-        throw new NotImplementedException();
+        tasks = tasks.Read();
+        for(int i = 0; i < tasks.Count; i++)
+        {
+            if(tasks[i].Id == id)
+            {
+                tasks[i].Status = status;
+                tasks.Save();
+                return true;
+            }
+        }
+        return false;
     }
 
-    public bool Update(int id)
+    public bool Update(int id, TaskDto task)
     {
         throw new NotImplementedException();
     }

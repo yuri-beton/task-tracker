@@ -16,6 +16,7 @@ class Program
 
         // service.Delete(1);
 
-        service.GetAll("ready");
+        service.Mark(1, "in-progress");
+        service.GetAll();
     }
 }

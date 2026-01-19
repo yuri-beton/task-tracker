@@ -22,7 +22,7 @@ public class Service : IService<Task, TaskDto>
     {
         if(storage.Delete(id))
         {
-            Console.WriteLine("Запись успешно удалена");
+            Console.WriteLine($"Запись {id} успешно удалена");
             return;
         }
         System.Console.WriteLine("Записи с таким id не существует!");
@@ -69,10 +69,16 @@ public class Service : IService<Task, TaskDto>
 
     public void Mark(int id, string status)
     {
-        throw new NotImplementedException();
+        //To-do валидация на корректный статус
+        if(storage.Mark(id, status))
+        {
+            Console.WriteLine($"Запись {id} успешно обновлена");
+            return;
+        }
+        Console.WriteLine("Записи с таким id не существует!");
     }
 
-    public void Update(int id)
+    public void Update(int id, TaskDto task)
     {
         throw new NotImplementedException();
     }
