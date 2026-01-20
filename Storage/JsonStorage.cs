@@ -62,8 +62,18 @@ public class JsonStorage : IStorage<Task, TaskDto>
         return false;
     }
 
-    public bool Update(int id, TaskDto task)
+    public bool Update(int id, string description)
     {
-        throw new NotImplementedException();
+        tasks = tasks.Read();
+        for(int i = 0; i < tasks.Count; i++)
+        {
+            if(tasks[i].Id == id)
+            {
+                tasks[i].Description = description;
+                tasks.Save();
+                return true;
+            }
+        }
+        return false;
     }
 }

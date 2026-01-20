@@ -16,7 +16,8 @@ class Program
 
         // service.Delete(1);
 
-        service.Mark(1, "in-progress");
+        service.Mark(2, "done");
+        service.Update(2, "blya");
         service.GetAll();
     }
 }

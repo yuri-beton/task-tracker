@@ -78,8 +78,13 @@ public class Service : IService<Task, TaskDto>
         Console.WriteLine("Записи с таким id не существует!");
     }
 
-    public void Update(int id, TaskDto task)
+    public void Update(int id, string description)
     {
-        throw new NotImplementedException();
+        if(storage.Update(id, description))
+        {
+            Console.WriteLine($"Запись {id} успешно обновлена");
+            return;
+        }
+        Console.WriteLine("Записи с таким id не существует!");
     }
 }

@@ -1,7 +1,7 @@
 public interface IStorage<T, TDto>
 {
     bool Add(TDto t);
-    bool Update(int id, TDto t);
+    bool Update(int id, string description);
     bool Delete(int id);
     bool Mark(int id, string status);
     List<T> GetAll();
