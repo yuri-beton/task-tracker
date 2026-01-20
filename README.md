@@ -17,7 +17,7 @@ cd task-tracker
 ```
 dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
 ```
-4. Add bin/Release/net8.0/win-x64/publish/ to Path. You can also move task-tracker.exe to C:\tools and add to Path after that.
+4. Add bin/Release/net8.0/win-x64/publish/ to Path. You can also move task-tracker.exe to C:\tools and then add to Path.
 
 ### Example
 ```
