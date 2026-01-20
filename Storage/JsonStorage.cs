@@ -55,6 +55,7 @@ public class JsonStorage : IStorage<Task, TaskDto>
             if(tasks[i].Id == id)
             {
                 tasks[i].Status = status;
+                tasks[i].UpdatedAt = DateTime.Now;
                 tasks.Save();
                 return true;
             }
@@ -70,6 +71,7 @@ public class JsonStorage : IStorage<Task, TaskDto>
             if(tasks[i].Id == id)
             {
                 tasks[i].Description = description;
+                tasks[i].UpdatedAt = DateTime.Now;
                 tasks.Save();
                 return true;
             }

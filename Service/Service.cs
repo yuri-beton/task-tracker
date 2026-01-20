@@ -9,7 +9,6 @@ public class Service : IService<Task, TaskDto>
     }
     public void Add(TaskDto task)
     {
-        //To-do: validation for status
         if (storage.Add(task))
         {
             Console.WriteLine("Задание успешно добавлено");
